@@ -1,13 +1,8 @@
-"""
-URL Configuration.
-"""
-
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include, path
 from dotenv import dotenv_values
-
 
 try:
     from .qi_production_apps import baseline_apps, production_apps

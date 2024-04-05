@@ -1,3 +1,5 @@
 from django.shortcuts import render
 
-# Create your views here.
+
+def ui_landing_page(request):
+    return render(request, "qi_main/main.html", {})
