@@ -49,7 +49,7 @@ def update_urlpatterns(mount_point: str, app_directory: str, urlpatterns: list) 
             path(
                 mount_point,
                 include(
-                    f"{str(directory_base)}.urls",
+                    f"{directory_base!s}.urls",
                 ),
             )
         )

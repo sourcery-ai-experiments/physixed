@@ -1,4 +1,4 @@
-from typing import Dict, Any
+from typing import Any, Dict
 
 development_apps: Dict[str, Any] = {
     "qi_main": {
