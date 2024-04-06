@@ -5,4 +5,8 @@ development_apps: Dict[str, Any] = {
         "mount_point": "qi/main/",
         "log_files": ["views"],
     },
+    "qi_infinite": {
+        "mount_point": "qi/infinite/",
+        "log_files": ["views"],
+    },
 }
