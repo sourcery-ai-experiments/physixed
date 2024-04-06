@@ -1,0 +1,7 @@
+{
+    "python.testing.pytestArgs": [
+        "qi_infinite"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true
+}
