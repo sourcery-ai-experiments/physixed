@@ -1,8 +1,7 @@
-import pytest
+from django.urls import resolve, reverse
 
-from django.urls import reverse, resolve
-from .. import config
-from .. import views
+from .. import config, views
+
 
 def test_ui_landing():
 

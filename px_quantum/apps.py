@@ -2,6 +2,7 @@ from django.apps import AppConfig
 
 APP_SLUG = "px_quantum"
 
+
 class QiMainConfig(AppConfig):
     """Configure the application."""
 

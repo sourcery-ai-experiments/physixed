@@ -8,7 +8,6 @@ from django.contrib import admin
 from django.urls import include, path
 from dotenv import dotenv_values
 
-
 try:
     from .px_production_apps import baseline_apps, production_apps
 except ImportError:
@@ -54,6 +53,7 @@ def update_urlpatterns(mount_point: str, app_directory: str, urlpatterns: list) 
 
     app_directory: str
         The name of the directory, in the Datamore project.
+
     """
     # This handles all regular cases, and the special case for "basic.apps.BasicCommonConfig"
     directory_base = app_directory.split(".")[0]
@@ -66,7 +66,7 @@ def update_urlpatterns(mount_point: str, app_directory: str, urlpatterns: list) 
             path(
                 mount_point,
                 include(
-                    f"{str(directory_base)}.urls",
+                    f"{directory_base!s}.urls",
                 ),
             )
         )

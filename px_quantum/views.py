@@ -1,9 +1,9 @@
-from django.shortcuts import render
 import numpy as np
+from django.shortcuts import render
 
 from .forms import QuantumNumberForm
-from .pytools.schroedinger import Schroedinger
 from .pytools.lineplot import make_plot
+from .pytools.schroedinger import Schroedinger
 
 
 def ui_landing_page(request):

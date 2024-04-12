@@ -5,5 +5,5 @@ from . import config, views
 app_name = config.APP_SLUG
 
 urlpatterns = [
-   path("", views.ui_landing_page, name="ui_landing_page"),
+    path("", views.ui_landing_page, name="ui_landing_page"),
 ]
