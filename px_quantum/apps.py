@@ -1,10 +1,9 @@
 from django.apps import AppConfig
 
-APP_SLUG = "qi_infinite"
-
+APP_SLUG = "px_quantum"
 
 class QiMainConfig(AppConfig):
     """Configure the application."""
 
     default_auto_field = "django.db.models.BigAutoField"
-    name = "qi_infinite"
+    name = "px_quantum"

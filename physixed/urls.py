@@ -10,15 +10,15 @@ from dotenv import dotenv_values
 
 
 try:
-    from .qi_production_apps import baseline_apps, production_apps
+    from .px_production_apps import baseline_apps, production_apps
 except ImportError:
-    assert False, "CRITICAL: Can't import `qi_production_apps.py`"
+    assert False, "CRITICAL: Can't import `px_production_apps.py`"
 
 try:
     if settings.DEBUG or settings.DJANGO_UNITTESTING:
-        from .qi_development_apps import development_apps
+        from .px_development_apps import development_apps
 except ImportError:
-    print("Can't import `qi_development_apps.py`. Using the production_app dict instead.")
+    print("Can't import `px_development_apps.py`. Using the production_app dict instead.")
     development_apps = production_apps.copy()
 
 admin.site.site_header = "Datamore Administration Page"

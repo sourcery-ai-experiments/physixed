@@ -1,6 +1,6 @@
 {
     "python.testing.pytestArgs": [
-        "qi_infinite"
+        "px_quantum"
     ],
     "python.testing.unittestEnabled": false,
     "python.testing.pytestEnabled": true
