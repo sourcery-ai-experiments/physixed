@@ -8,18 +8,23 @@ from django.contrib import admin
 from django.urls import include, path
 from dotenv import dotenv_values
 
-
 try:
-    from .qi_production_apps import baseline_apps, production_apps
+    from .px_production_apps import baseline_apps, production_apps
 except ImportError:
-    assert False, "CRITICAL: Can't import `datamore_production_apps.py`"
+    assert False, "CRITICAL: Can't import `px_production_apps.py`"
 
 try:
     if settings.DEBUG or settings.DJANGO_UNITTESTING:
-        from .qi_development_apps import development_apps
+        from .px_development_apps import development_apps
 except ImportError:
-    print("Can't import `qi_development_apps.py`. Using the production_app dict instead.")
+    print("Can't import `px_development_apps.py`. Using the production_app dict instead.")
     development_apps = production_apps.copy()
+
+admin.site.site_header = "Datamore Administration Page"
+
+sign_in_url = settings.LOGIN_URL
+if sign_in_url.startswith("/"):
+    sign_in_url = sign_in_url[1:]
 
 
 oauthsettings = {k.replace("oauth__", ""): v for k, v in dotenv_values(dotenv_path=".env").items()}
@@ -27,6 +32,10 @@ oauthsettings = {k.replace("oauth__", ""): v for k, v in dotenv_values(dotenv_pa
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    # May 2020: https://docs.microsoft.com/en-us/graph/tutorials/python?tutorial-step=3
+    # NOTE: this must match
+    # TODO: pull this endpoint out of the yaml/.env file instead. Change it in 1 place only
+    # Currently it is: https://____.com/microsoft-auth/callback
 ]
 
 # Django debug toolbar:
@@ -35,15 +44,18 @@ if settings.DEBUG:
 
 
 def update_urlpatterns(mount_point: str, app_directory: str, urlpatterns: list) -> None:
-    """Return a path object to add the 'urlpatterns'.
+    """Returns a path object to add to the `urlpatterns`.
 
-    Args:
-        mount_point (str): mounting point of the app in the root of the project
-        app_directory (str): name of the directory in the Quantum Insight project
-        urlpatterns (list): list of urls
+    Parameters
+    ----------
+    mount_point : str
+        Where the app is mounted in the root of the project.
+
+    app_directory: str
+        The name of the directory, in the Datamore project.
 
     """
-
+    # This handles all regular cases, and the special case for "basic.apps.BasicCommonConfig"
     directory_base = app_directory.split(".")[0]
     if mount_point is not None:
         if mount_point.startswith("/"):
@@ -54,7 +66,7 @@ def update_urlpatterns(mount_point: str, app_directory: str, urlpatterns: list) 
             path(
                 mount_point,
                 include(
-                    f"{str(directory_base)}.urls",
+                    f"{directory_base!s}.urls",
                 ),
             )
         )

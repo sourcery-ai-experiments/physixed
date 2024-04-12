@@ -1,0 +1,11 @@
+{% extends "px_main/base.html" %}
+{% load static %}
+{% block content %}
+    <link rel="stylesheet" href="{% static 'css/stylesheet.css' %}" />
+    <form action="" method="get">
+        {{ form.as_p }}
+        <button type="submit">submit</button>
+    </form>
+    <div>{{ fig_infinite|safe }}</div>
+    <div>{{ fig_infinite_sq|safe }}</div>
+{% endblock content %}
