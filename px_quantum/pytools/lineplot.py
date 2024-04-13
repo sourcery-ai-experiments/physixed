@@ -1,4 +1,5 @@
 import plotly.graph_objs as go
+import numpy as np
 
 
 def make_plot(x_data: list, y_data: list, x_label: str, y_label: str) -> str:
@@ -15,12 +16,13 @@ def make_plot(x_data: list, y_data: list, x_label: str, y_label: str) -> str:
     str: The HTML content of the plot.
 
     """
-    fig = go.Figure().set_subplots(1, 2)
+    if np.shape(x_data) != np.shape(y_data):
+        raise ValueError(f"x of shape {np.shape(x_data)} and y of shape {np.shape(y_data)} are mismatched.")
+
+    fig = go.Figure()
 
     fig.add_trace(
         go.Scatter(x=x_data, y=y_data, mode="lines", hoverinfo="skip"),
-        row=1,
-        col=1,
     )
 
     fig.update_layout(
@@ -28,8 +30,6 @@ def make_plot(x_data: list, y_data: list, x_label: str, y_label: str) -> str:
         showlegend=False,
         xaxis_title=x_label,
         yaxis_title=y_label,
-        xaxis2_title=r"$x$",
-        yaxis2_title=r"$\left| \psi(x) \right|^2$",
     )
 
     return fig.to_html(config={"displaylogo": False}, include_mathjax="cdn", full_html=False)
