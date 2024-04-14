@@ -2,3 +2,12 @@
     border-radius: 10px;
     text-align: right;
 }
+
+.plot-div {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    column-gap: 100px;
+    margin-left: 50px;
+    margin-right: 100px;
+    height: 500px;
+}

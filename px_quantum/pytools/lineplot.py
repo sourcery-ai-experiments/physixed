@@ -30,6 +30,13 @@ def make_plot(x_data: list, y_data: list, x_label: str, y_label: str) -> str:
         showlegend=False,
         xaxis_title=x_label,
         yaxis_title=y_label,
+        height=500,
+        width=500,
+        margin={
+            "l": 50,
+            "r": 10,
+            "t": 10,
+        }
     )
 
     return fig.to_html(config={"displaylogo": False}, include_mathjax="cdn", full_html=False)

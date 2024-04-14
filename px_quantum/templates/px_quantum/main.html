@@ -1,11 +1,23 @@
 {% extends "px_main/base.html" %}
 {% load static %}
 {% block content %}
-    <link rel="stylesheet" href="{% static 'css/stylesheet.css' %}" />
-    <form action="" method="get">
-        {{ form.as_p }}
-        <button type="submit">submit</button>
-    </form>
-    <div>{{ fig_infinite|safe }}</div>
-    <div>{{ fig_infinite_sq|safe }}</div>
+<link rel="stylesheet" href="{% static 'css/stylesheet.css' %}" />
+<div>
+    <div class="plot-div"> 
+        <div style="text-align:center; background-color: lightpink">
+            <form style="position:absolute; top: 300px; left: 7%" action="" method="get">
+                {{ form.as_p }}
+            <button type="submit">submit</button>
+            </form>
+        </div>
+        <div style="background-color: lightblue; padding-left: 300px">
+            <div style="text-align: left;">
+                {{ fig_infinite|safe }}
+            </div>
+            <div>
+                {{ fig_infinite_sq|safe }}
+            </div> 
+        </div>
+    </div>
+</div>
 {% endblock content %}

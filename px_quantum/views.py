@@ -21,7 +21,7 @@ def ui_landing_page(request):
         n = request.GET.get("quantum_number") or 0
 
         fig_infinite = make_plot(x_data, y_data[int(n)], x_label=r"x", y_label=r"$\psi$")
-        fig_infinite_sq = make_plot(x_data, np.abs(y_data[int(n)]) ** 2, x_label=r"x", y_label=r"$\left|\psi\right|^2$")
+        fig_infinite_sq = make_plot(x_data, 20*np.abs(y_data[int(n)]) ** 2, x_label=r"x", y_label=r"$\left|\psi\right|^2$")
 
     context = {
         "form": form,
