@@ -28,6 +28,7 @@ SECRET_KEY = "django-insecure-y$lr3$o6)q^k-4mlnm!va5#inp9i6*5og7rlt98ngrc76gh^m#
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = int(dotenv_values(dotenv_path=".env").get("DJANGO_DEBUG", True))
+DJANGO_UNITTESTING = int(dotenv_values(dotenv_path=".env").get("DJANGO_UNITTESTING", False))
 
 allowed_hosts_fallback = "localhost 127.0.0.1 [::1]"
 ALLOWED_HOSTS = dotenv_values(dotenv_path=".env").get("ALLOWED_HOSTS", allowed_hosts_fallback).split(" ")
