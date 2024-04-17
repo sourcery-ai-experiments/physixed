@@ -1,3 +1,5 @@
+"""Quantum Mechanics package."""
+
 from zoneinfo import ZoneInfo
 
 from .apps import APP_SLUG as APP_SLUG_

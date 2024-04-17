@@ -3,8 +3,8 @@ import numpy as np
 from ..pytools.schroedinger import Schroedinger
 
 
-def test_mL2V():
-    assert Schroedinger().get_mL2V().all() == np.zeros(100).all()
+def test_ml2v():
+    assert Schroedinger().get_ml2v().all() == np.zeros(100).all()
 
 
 def test_eigenvalues():
