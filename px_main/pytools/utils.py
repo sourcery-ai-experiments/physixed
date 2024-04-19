@@ -1,5 +1,7 @@
 
+import numpy as np
 import pint
+from numpy._typing import NDArray
 
 
 def ureg_f() -> pint.UnitRegistry:
@@ -16,3 +18,43 @@ def ureg_f() -> pint.UnitRegistry:
     ureg.setup_matplotlib()
 
     return ureg
+
+ureg = ureg_f()
+
+def _magnitude(tpl: tuple | list) -> float | int | NDArray | None:
+    if isinstance(tpl[0], float | int | np.ndarray):
+        return tpl[0]
+    if not tpl[0]:
+        return np.nan
+    raise TypeError(f"int, float, ndarray expected, got {type(tpl[0])}")
+
+def _try_convert_2_quantity(tpl: tuple, value: float | NDArray)->pint.Quantity:
+    try:
+        string = tpl[1]
+        if isinstance(string, str):
+            pass
+
+        else:
+            raise TypeError(f"str expected, got {type(tpl[1])}")
+
+    except IndexError:
+        string = ""
+
+    if string:
+        string = string.strip()
+
+    return value * ureg.parse_expression(string)
+
+def _try_convert_2_requested_unit(tpl:tuple, quant:pint.Quantity)->pint.Quantity:
+    try:
+        req_unit: str | None = tpl[2]
+        if req_unit is not None:
+            quant.ru = req_unit if isinstance(req_unit, str) else "dimensionless"
+            quant.requested_unit = quant.ru
+            quant = quant.to(quant.ru)
+    except IndexError:
+        quant.ru = None
+    return quant
+
+def value_pare_unit(tpl: tuple|list|None|pint.Quantity)->pint.Quantity:
+    pass
