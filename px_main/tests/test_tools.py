@@ -6,6 +6,8 @@ import pytest
 
 from ..pytools import utils
 
+# TODO: Clean up the files and make parametrize smaller
+
 
 @pytest.fixture()
 def registry() -> Callable:
@@ -39,10 +41,6 @@ class TestPintHappy:
         """
         unit = registry(unit_str)
         assert unit.units == expected
-
-    # def test_try_convert_2_quantity(self) -> None:
-    #     output = utils._try_convert_2_quantity((1, ""), 1)
-    #     assert isinstance(output, pint.Quantity)
 
     @pytest.mark.parametrize(
         ("input_tuple", "expected"),
@@ -124,4 +122,14 @@ class TestPintSad:
             registry("Rankine")
         assert str(exp.value) == "'Rankine' is not defined in the unit registry"
 
-    # TODO: Create sad-path test for pint functions
+    def test_magnitude_sad(self) -> None:
+        """Test errorhandling of the magnitude parsing."""
+        with pytest.raises(TypeError) as exp:
+            utils.value_parse_unit(("random", "meter"))
+        assert str(exp.value) == f"int, float, ndarray expected, got {str}"
+
+    def test_convert_2_quantitity(self) -> None:
+        """Test errorhandling of the unit parsing."""
+        with pytest.raises(TypeError) as exp:
+            utils._try_convert_2_quantity((10, 10), 10)
+        assert str(exp.value) == f"str expected, got {int}"
