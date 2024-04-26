@@ -1,6 +1,7 @@
 import numpy as np
 import pint
 
+from px_main.pytools.exceptions import NegativeValueError
 from px_main.pytools.utils import value_parse_unit
 
 
@@ -20,10 +21,30 @@ class FreeFallModel:
         initial_v: tuple,
         time_discretization_step: tuple | None = (0.01, "s"),
     ):
-        self.initial_h = value_parse_unit(initial_h)
+        self.initial_h = initial_h
         self.initial_v = value_parse_unit(initial_v)
         self.time_discretization_step = value_parse_unit(time_discretization_step)
         self.g = value_parse_unit((9.81, "m/s**2"))
+
+    @property
+    def initial_h(self) -> pint.Quantity:
+        """Create private height attribute."""
+        return self._initial_h
+
+    @initial_h.setter
+    def initial_h(self, value: tuple) -> None:
+        """Initialize height setter.
+
+        Args:
+            value (tuple): tuple of height value and unit
+
+        Raises:
+            NegativeValueError: if height value is smaller than 0
+
+        """
+        if value[0] < 0:
+            raise NegativeValueError("Height cannot be smaller than 0.")
+        self._initial_h = value_parse_unit(value)
 
     def solve_endtime(self) -> pint.Quantity:
         """Calculate time till object hits the ground.
