@@ -1,3 +1,3 @@
-# Quantum Insight
+# Physixed
 
-Django based web application that visualizes sevarel cases in quantum mechanics.
+Django based web application that visualizes sevarel cases in physics.
