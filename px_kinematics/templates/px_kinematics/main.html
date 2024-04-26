@@ -6,6 +6,9 @@
             {{ form.as_p }}
             <button type="submit">submit</button>
         </form>
+        <div>
+          {{ fig|safe }}
+        <div>
         <p>Time till hitting the ground = {{ time.magnitude|floatformat:2 }} {{ time.units }}</p>
     </div>
 {% endblock content %}
