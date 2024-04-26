@@ -6,6 +6,6 @@
             {{ form.as_p }}
             <button type="submit">submit</button>
         </form>
-        <p>Your distance input is: {{ distance }}</p>
+        <p>Time till hitting the ground = {{ time.magnitude|floatformat:2 }} {{ time.units }}</p>
     </div>
 {% endblock content %}
