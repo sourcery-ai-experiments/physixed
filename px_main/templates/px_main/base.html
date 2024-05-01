@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-{% load static %}
 <html lang="nl">
   <head>
+    {% load static %}
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <title>Physixed</title>
@@ -9,7 +9,10 @@
           content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
     <meta name="description" content="" />
     <meta name="keywords" content="" />
-    <link href="stylesheet" rel=" {% static 'stylesheet.css' %}" />
+    <link rel="stylesheet" href="{% static 'px_main/stylesheet.css' %}" />
+    {% block static %}
+
+    {% endblock static %}
   </head>
   <body>
     {% block content %}

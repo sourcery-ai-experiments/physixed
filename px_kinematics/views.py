@@ -35,7 +35,7 @@ def ui_landing_page(request: HttpRequest) -> HttpResponse:
                 "time": time,
                 "fig": fig,
             }
-        return TemplateResponse(request, "px_kinematics/main.html", context)
+            return TemplateResponse(request, "px_kinematics/main.html", context)
 
     form = FreeFallForm()
     context = {"form": form}
