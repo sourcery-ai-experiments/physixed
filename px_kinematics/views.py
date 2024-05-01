@@ -20,9 +20,6 @@ def ui_landing_page(request: HttpRequest) -> HttpResponse:
         HttpResponse: Response of the entrypoint
 
     """
-    form = FreeFallForm()
-    time = 0
-    fig = None
     if request.method == "POST":
         form = FreeFallForm(request.POST)
         if form.is_valid():
@@ -33,10 +30,14 @@ def ui_landing_page(request: HttpRequest) -> HttpResponse:
             results = free_fall_model.solve_eq()
 
             fig = make_plot(x_data=results["time"], y_data=results["height"])
-    context = {
-        "form": form,
-        "time": time,
-        "fig": fig,
-    }
+            context = {
+                "form": form,
+                "time": time,
+                "fig": fig,
+            }
+        return TemplateResponse(request, "px_kinematics/main.html", context)
+
+    form = FreeFallForm()
+    context = {"form": form}
 
     return TemplateResponse(request, "px_kinematics/main.html", context)

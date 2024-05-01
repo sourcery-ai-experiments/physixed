@@ -20,4 +20,6 @@ def make_plot(x_data: NDArray | list, y_data: NDArray | list) -> str:
         go.Scatter(x=x_data, y=y_data, mode="lines", hoverinfo="skip"),
     )
 
+    fig.update_layout(paper_bgcolor="rgba(0, 0, 0, 0)", margin={"l": 5, "r": 5, "t": 5, "b": 5}, width=400, height=400)
+
     return fig.to_html(config={"displaylogo": False}, include_mathjax="cdn", full_html="false")

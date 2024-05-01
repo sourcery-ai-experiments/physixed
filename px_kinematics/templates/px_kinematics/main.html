@@ -1,14 +1,74 @@
 {% extends "px_main/base.html" %}
+{% load static %}
 {% block content %}
+    <link rel="stylesheet" href="{% static 'px_kinematics/stylesheet.css' %}" />
+    <header>
+        {% comment %}
+            TODO: make buttons on header.
+        {% endcomment %}
+        <a href="" class="logo">Logo</a>
+        <nav class="nav-main">
+            <a href="">button 1</a>
+            <a href="">button 2</a>
+        </nav>
+    </header>
     <div>
-        <form action="" method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit">submit</button>
-        </form>
         <div>
-          {{ fig|safe }}
-        <div>
-        <p>Time till hitting the ground = {{ time.magnitude|floatformat:2 }} {{ time.units }}</p>
+            <form action="" method="post">
+                {% csrf_token %}
+                <div>
+                    <label class="freefall-label" for="distance">distance</label>
+                    <input class="freefall-input"
+                           type="floatformat"
+                           name="distance"
+                           id="distance_input" />
+                </div>
+                <div>
+                    <label class="freefall-label" for="velocity">velocity</label>
+                    <input classe="frefall-input"
+                           type="number"
+                           name="velocity"
+                           id="velocity_input" />
+                </div>
+                <div>
+                    <input class="submit-button" type="submit" value="Ok" />
+                </div>
+            </form>
+        </div>
+        <div>{{ fig|safe }}</div>
     </div>
+    {% comment %} <div class="grid-container">
+        <div class="grid-item">
+            <div>
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <div class="form-input">
+                        <label for="distance">distance</label>
+                        <input type="number" name="distance" id="distance_input" />
+                    </div>
+                    <div class="form-input">
+                        <label for="velocity">velocity</label>
+                        <input type="number" name="velocity" id="velocity_input" />
+                    </div>
+                    <div>
+                        <input type="submit" value="OK" />
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="plot-item">{{ fig|safe }}</div>
+    </div> {% endcomment %}
+    {% comment %} <div class="test">
+        <div class="grid-item">
+            <form action="" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">submit</button>
+            </form>
+        </div>
+        <div class="grid-item">
+            <p>Time till hitting the ground = {{ time.magnitude|floatformat:2 }} {{ time.units }}</p>
+        </div>
+        <div>{{ fig|safe }}</div>
+    </div> {% endcomment %}
 {% endblock content %}
