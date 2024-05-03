@@ -41,9 +41,10 @@ header a.logo {
 
 .grid-container {
   display: grid;
-  grid-template-columns: 0.3fr 1fr;
+  grid-template-columns: 1fr 1fr;
   background-color: #ffff;
   padding: 10px;
+  border: 1px solid black;
 }
 
 .input-container {

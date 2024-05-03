@@ -2,6 +2,7 @@
 {% load static %}
 {% block static %}
     <link rel="stylesheet" href="{% static 'px_kinematics/stylesheet.css' %}" />
+    <script src="{% static 'px_kinematics/free_fall.js' %}"></script>
 {% endblock static %}
 {% block content %}
     <header>
@@ -16,22 +17,18 @@
     </header>
     <div class="grid-container">
         <div>
-            <form action="" method="post">
+            <form action="" method="post" id="plotForm">
                 {% csrf_token %}
-                <div class="input-container"a>
-                    <div>
-                        <label class="freefall-label" for="distance">distance</label>
-                    </div>
-                    <div>
-                        <input class="freefall-input"
-                               type="number"
-                               step="0.01"
-                               name="distance"
-                               id="distance_input" />
-                    </div>
+                <div class="input-container">
+                    <label class="freefall-label" for="distance_input">distance</label>
+                    <input class="freefall-input"
+                           type="number"
+                           step="0.01"
+                           name="distance"
+                           id="distance_input" />
                 </div>
                 <div class="input-container">
-                    <label class="freefall-label" for="velocity">velocity</label>
+                    <label class="freefall-label" for="velocity_input">velocity</label>
                     <input class="freefall-input"
                            type="number"
                            name="velocity"
@@ -42,6 +39,6 @@
                 </div>
             </form>
         </div>
-        <div class="plot">{{ fig|safe }}</div>
+        <div class="plot" id="plotContainer"></div>
     </div>
 {% endblock content %}

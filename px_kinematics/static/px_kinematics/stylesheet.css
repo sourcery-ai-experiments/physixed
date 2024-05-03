@@ -1,20 +1,20 @@
 .freefall-label {
-  display: flex;
-  clear: none;
-  text-align: right;
-  padding-right: 10px;
+  display: inline-block;
+  /* float: left; */
+  text-align: center;
+  /* padding-right: 10px; */
 }
 
 .freefall-input {
   display: flex;
   width: 50px;
-  float: left;
+  /* float: left; */
 }
 
 
 .freefall-input,
 .freefall-label {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .plot{
