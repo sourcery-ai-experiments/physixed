@@ -1,0 +1,30 @@
+.freefall-label {
+  display: inline-block;
+  /* float: left; */
+  text-align: center;
+  /* padding-right: 10px; */
+}
+
+.freefall-input {
+  display: flex;
+  width: 50px;
+  /* float: left; */
+}
+
+
+.freefall-input,
+.freefall-label {
+  margin-bottom: 10px;
+}
+
+.plot{
+  display:flex;
+  width: 400px;
+  float: right;
+  border: 1px solid black;
+  padding-left: 100px;
+  text-align: right;
+}
+
+/* .submit-button { */
+/* } */

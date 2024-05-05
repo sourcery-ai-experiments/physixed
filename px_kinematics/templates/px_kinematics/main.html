@@ -1,11 +1,44 @@
 {% extends "px_main/base.html" %}
+{% load static %}
+{% block static %}
+    <link rel="stylesheet" href="{% static 'px_kinematics/stylesheet.css' %}" />
+    <script src="{% static 'px_kinematics/free_fall.js' %}"></script>
+{% endblock static %}
 {% block content %}
-    <div>
-        <form action="" method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit">submit</button>
-        </form>
-        <p>Time till hitting the ground = {{ time.magnitude|floatformat:2 }} {{ time.units }}</p>
+    <header>
+        {% comment %}
+            TODO: make buttons on header.
+        {% endcomment %}
+        <a href="" class="logo">Logo</a>
+        <nav class="nav-main">
+            <a href="">button 1</a>
+            <a href="">button 2</a>
+        </nav>
+    </header>
+    <div class="grid-container">
+        <div>
+            <form action="" method="post" id="plotForm">
+                {% csrf_token %}
+                <div class="input-container">
+                    <label class="freefall-label" for="distance_input">distance</label>
+                    <input class="freefall-input"
+                           type="number"
+                           step="0.01"
+                           name="distance"
+                           id="distance_input" />
+                </div>
+                <div class="input-container">
+                    <label class="freefall-label" for="velocity_input">velocity</label>
+                    <input class="freefall-input"
+                           type="number"
+                           name="velocity"
+                           id="velocity_input" />
+                </div>
+                <div class="input-container">
+                    <input class="submit-button" type="submit" value="Ok" />
+                </div>
+            </form>
+        </div>
+        <div class="plot" id="plotContainer"></div>
     </div>
 {% endblock content %}
