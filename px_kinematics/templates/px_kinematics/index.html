@@ -5,30 +5,26 @@
     <script src="{% static 'px_kinematics/free_fall.js' %}"></script>
 {% endblock static %}
 {% block content %}
-    <div class="grid-container">
-        <div>
-            <form action="" method="post" id="plotForm">
+    <section class="plot-section">
+        <section class="input-section">
+            <form class="input-form" method="post">
                 {% csrf_token %}
-                <div class="input-container">
-                    <label class="freefall-label" for="distance_input">distance</label>
-                    <input class="freefall-input"
-                           type="number"
-                           step="0.01"
-                           name="distance"
-                           id="distance_input" />
-                </div>
-                <div class="input-container">
-                    <label class="freefall-label" for="velocity_input">velocity</label>
-                    <input class="freefall-input"
-                           type="number"
-                           name="velocity"
-                           id="velocity_input" />
-                </div>
-                <div class="input-container">
-                    <input class="submit-button" type="submit" value="Ok" />
-                </div>
+                <label for="distance-input" class="freefall-label">distance</label>
+                <input type="number"
+                       class="freefall-input"
+                       step="0.01"
+                       name="distance"
+                       id="distance-input" />
+                <label for="velocity-input" class="freefall-label">velocity</label>
+                <input type="number"
+                       class="freefall-input"
+                       step="0.01"
+                       name="velocity"
+                       id="velocity-input" />
+                <button class="form-button" type="submit">Submit</button>
             </form>
-        </div>
-        <div class="plot" id="plotContainer"></div>
-    </div>
+        </section>
+        <section class="fig-section">
+        </section>
+    </section>
 {% endblock content %}
