@@ -46,4 +46,4 @@ def ui_landing_page(request: HttpRequest) -> HttpResponse:
     form = FreeFallForm()
     context = {"form": form}
 
-    return TemplateResponse(request, "px_kinematics/main.html", context)
+    return TemplateResponse(request, "px_kinematics/index.html", context)

@@ -1,4 +1,5 @@
 import numpy as np
+from django.http import HttpResponse
 from django.shortcuts import render
 
 from .forms import QuantumNumberForm
@@ -6,7 +7,7 @@ from .pytools.lineplot import make_plot
 from .pytools.schroedinger import Schroedinger
 
 
-def ui_landing_page(request):
+def ui_landing_page(request) -> HttpResponse:
     form = QuantumNumberForm()
     model = Schroedinger()
     x_data = model.x[1:-1]
@@ -29,4 +30,4 @@ def ui_landing_page(request):
         "fig_infinite_sq": fig_infinite_sq,
     }
 
-    return render(request, "px_quantum/main.html", context)
+    return render(request, "px_quantum/index.html", context)
