@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  $("#plotForm").submit(function (event) {
+  $(".input-form").submit(function (event) {
     console.log("Formulier is ingediend!");
     event.preventDefault(); // Voorkom standaardgedrag van formulierinzending
 
@@ -13,7 +13,7 @@ $(document).ready(function () {
       data: formData,
       success: function (data) {
         // Voeg de plot toe aan de container
-        $("#plotContainer").html(data.fig);
+        $(".fig-section").html(data.fig);
       },
       error: function (xhr, errmsg, err) {
         console.log(xhr.status + ": " + xhr.responseText); // Log eventuele fouten
