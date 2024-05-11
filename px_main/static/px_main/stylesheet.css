@@ -5,6 +5,8 @@
   box-sizing: border-box;
 }
 
+
+
 ul {
   list-style: none;
 }
@@ -28,10 +30,17 @@ a {
   }
 }
 
+html {
+
+  --accent-color: rgba(12, 67, 88, 0.7);
+
+  overflow-x: hidden;
+}
+
 body {
   font-family: "Poppins", sans-serif;
-  background-color: rgba(12, 67, 88, 0.7);
-  overflow-x: hidden;
+  background-color: var(--accent-color);
+
 }
 
 /* HEADER */
@@ -71,7 +80,7 @@ body {
   border-radius: 5px;
   margin: 0 auto;
   margin-bottom: 35px;
-  box-shadow: 0 4px 44px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 44px var(--accent-color);
   animation: fade-in 0.4s 0.1s backwards;
 }
 

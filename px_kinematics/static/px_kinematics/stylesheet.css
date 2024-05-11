@@ -1,30 +1,48 @@
+.main {
+    height: 500px;
+}
+.plot-section {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding-top: 35px;
+}
+
+.input-form {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 225px;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .freefall-label {
-  display: inline-block;
-  /* float: left; */
-  text-align: center;
-  /* padding-right: 10px; */
+    margin-bottom: 25px;
+    margin-right: 25px;
+    font-size: 20px;
+
 }
 
 .freefall-input {
-  display: flex;
-  width: 50px;
-  /* float: left; */
+    margin-bottom: 25px;
+    border-radius: 10px;
+    padding-left: 15px;
+    text-align: right;
+    font-size: 20px;
+    width: 100px;
 }
 
-
-.freefall-input,
-.freefall-label {
-  margin-bottom: 10px;
+.form-button {
+    width: 100%;
+    font-size: 20px;
+    font-family: inherit;
+    border-radius: 3px;
+    color: #fff;
+    background-color: var(--accent-color);
 }
 
-.plot{
-  display:flex;
-  width: 400px;
-  float: right;
-  border: 1px solid black;
-  padding-left: 100px;
-  text-align: right;
+.fig-section {
+    width: 400px;
+    height: 400px;
 }
-
-/* .submit-button { */
-/* } */
