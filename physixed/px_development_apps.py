@@ -2,7 +2,7 @@ from typing import Any
 
 development_apps: dict[str, Any] = {
     "px_main": {
-        "mount_point": "px/main/",
+        "mount_point": "",
         "log_files": ["views"],
     },
     "px_quantum": {

@@ -1,20 +1,10 @@
-{% extends "px_main/index.html" %}
+{% extends "px_main/base.html" %}
 {% load static %}
 {% block static %}
     <link rel="stylesheet" href="{% static 'px_kinematics/stylesheet.css' %}" />
     <script src="{% static 'px_kinematics/free_fall.js' %}"></script>
 {% endblock static %}
 {% block content %}
-    <header>
-        {% comment %}
-            TODO: make buttons on header.
-        {% endcomment %}
-        <a href="" class="logo">Logo</a>
-        <nav class="nav-main">
-            <a href="">button 1</a>
-            <a href="">button 2</a>
-        </nav>
-    </header>
     <div class="grid-container">
         <div>
             <form action="" method="post" id="plotForm">
