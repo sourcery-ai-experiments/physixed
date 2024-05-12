@@ -14,7 +14,6 @@
     flex-wrap: wrap;
     max-width: 225px;
     justify-content: space-between;
-    align-items: center;
 }
 
 .freefall-label {
