@@ -1,5 +1,6 @@
 import plotly.graph_objs as go
-from numpy._typing import NDArray
+from numpy import ndarray
+from numpy.typing import NDArray
 
 
 def make_plot(x_data: NDArray | list, y_data: NDArray | list) -> str:
@@ -13,6 +14,8 @@ def make_plot(x_data: NDArray | list, y_data: NDArray | list) -> str:
         Graph object
 
     """
+    if not isinstance(x_data, ndarray | list) or not isinstance(y_data, ndarray | list):
+        raise TypeError("x_data and y_data must be of type NDArray or list")
 
     fig = go.Figure()
 
