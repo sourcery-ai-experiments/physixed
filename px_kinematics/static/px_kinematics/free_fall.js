@@ -1,12 +1,12 @@
 $(document).ready(function () {
-  var isFirstPlot = true; // Vlag om bij te houden of dit de eerste keer is dat de plot wordt toegevoegd
+  let isFirstPlotRendered = true;
 
   $(".input-form").submit(function (event) {
     console.log("Formulier is ingediend!");
     event.preventDefault(); // Voorkom standaardgedrag van formulierinzending
 
     // Verzamel gegevens uit het formulier
-    var formData = $(this).serialize();
+    let formData = $(this).serialize();
 
     // Stuur formuliergegevens naar de backend met AJAX
     $.ajax({
