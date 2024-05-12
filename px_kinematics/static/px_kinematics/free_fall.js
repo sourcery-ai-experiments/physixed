@@ -18,7 +18,7 @@ $(document).ready(function () {
         let plotContainer = $(".fig-section");
         if (isFirstPlotRendered) {
           plotContainer.hide().html(data.fig).fadeIn(1000); // 1000 is de duur van de fade-in animatie in milliseconden
-          isFirstPlot = false; // Markeer dat de plot al is toegevoegd
+          isFirstPlotRendered = false; // Markeer dat de plot al is toegevoegd
         } else {
           plotContainer.html(data.fig); // Voeg de plot toe zonder fade-in animatie
         }
