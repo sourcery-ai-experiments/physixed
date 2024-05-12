@@ -10,14 +10,14 @@ def make_plot(x_data: pint.Quantity, y_data: pint.Quantity) -> str:
         y_data (pint.Quantity): y values
 
     Returns:
-        HTML rendered graph object
+        HTML string consisting of the plotly plot.
 
     """
-    if not hasattr(x_data, "__len__") or isinstance(x_data, str):
-        raise TypeError("x and y must either be list or NDArray")
+    if not isinstance(x_data, pint.Quantity):
+        raise TypeError("x_data must be a pint.Quantity and either a list or NDArray")
 
-    if not hasattr(y_data, "__len__") or isinstance(y_data, str):
-        raise TypeError("x and y must either be list or NDArray")
+    if not isinstance(y_data, pint.Quantity):
+        raise TypeError("y_data must be a pint.Quantity and either a list or NDArray")
 
     fig = go.Figure()
 
