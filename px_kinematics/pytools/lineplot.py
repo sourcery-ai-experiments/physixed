@@ -1,9 +1,9 @@
 import plotly.graph_objs as go
-from numpy._typing import NDArray
+from numpy.typing import NDArray
 
 
 def make_plot(x_data: NDArray | list, y_data: NDArray | list) -> str:
-    """Create a plotly html object.
+    """Create a plotly html representation as string.
 
     Args:
         x_data (NDArray|list): x values
@@ -13,6 +13,11 @@ def make_plot(x_data: NDArray | list, y_data: NDArray | list) -> str:
         Graph object
 
     """
+    if not hasattr(x_data, "__len__") or isinstance(x_data, str):
+        raise TypeError("x and y must either be list or NDArray")
+
+    if not hasattr(y_data, "__len__") or isinstance(y_data, str):
+        raise TypeError("x and y must either be list or NDArray")
 
     fig = go.Figure()
 
